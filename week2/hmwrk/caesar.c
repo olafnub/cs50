@@ -3,24 +3,33 @@
 #include <string.h>
 #include <stdlib.h>
 
-int checkUsageKey(int argc, string argv[]);
 char rotate(char letter, int key);
 
 int main(int argc, string argv[])
 {
     // Give error if input is not a number or if input is n/a
-    int checkError = checkUsageKey(argc, argv);
-    if (checkError == 1)
+    if (!(argc == 2))
     {
         printf("Usage: ./caesar key\n");
         return 1;
     }
 
+    for (int j = 1; j < argc; j++)
+    {
+        for (int i = 0, k = strlen(argv[j]); i < k; i++)
+        {
+            if (!(argv[j][i] >= 48 && argv[j][i] <= 57))
+            {
+                printf("Usage: ./caesar key\n");
+                return 1;
+            }
+        }
+    }
     // Take input from user for input & plaintext
     int keyInput = atoi(argv[1]);
     string plainInput = get_string("plaintext:  ");
 
-    // Convert plain text to cypher text based on key value 
+    // Convert plain text to cypher text based on key value
     printf("ciphertext: ");
     for (int i = 0; i < strlen(plainInput); i++)
     {
@@ -30,27 +39,7 @@ int main(int argc, string argv[])
     return 0;
 }
 
-// Loops through input to see if there are required numeric for
-int checkUsageKey(int argc, string argv[]) 
-{
-    int error = 0;
-    for (int j = 0; j < argc-1; j++)
-    {
-        if (argc == 1 || !(argv[1][j] >= 48 && argv[1][j] <= 57))
-        {
-            error++;
-        }
-    }
-    if (error > 0)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-}
-// barfoo
+// barfoo -> for testing
 char rotate(char letter, int key)
 {
     int charASCII = (key % 26) + letter;
@@ -59,14 +48,14 @@ char rotate(char letter, int key)
     {
         if (charASCII > 90)
         {
-            charASCII-=26;
+            charASCII -= 26;
         }
     }
     else if (letter >= 97 && letter <= 122)
     {
         if (charASCII > 122)
         {
-            charASCII-=26;
+            charASCII -= 26;
         }
     }
     else
