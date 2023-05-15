@@ -1,0 +1,39 @@
+sort1 uses: bubble sort
+
+How do you know?: Bubble sort's algorithm time is O(n^2 + 2n + 1) which is longer than the rest
+
+sort2 uses: merge sort
+
+How do you know?: Sort's algorithm is just O(n) which is the fastest way of computing
+
+sort3 uses: selection sort
+
+How do you know?: Selection's algorithm uses O(n^2) which is longer than merge but shorter than bubble
+
+
+RECALL
+Merge was O(n)
+Bubble was O(n^2 + 2n + 1)
+Selection was O(n^2)
+
+TIME
+Bubble
+sort1 reversed10000.txt
+real 0m0.266s - .303s
+sort1 random10000.txt           ||          50000 - 0m7.917s
+real 0m0.319 - 0.368s
+
+Merge
+sort2 random10000           ||          50000 - 0m0.531s
+real .054s - 0.136s
+sort2 reversed10000
+real .064s - 0.82s
+
+Selection
+sort3 random10000           ||          50000 - 0m3.273s
+real .167s - .184s
+sort3 reversed10000
+real .150s - .189s
+
+
+
