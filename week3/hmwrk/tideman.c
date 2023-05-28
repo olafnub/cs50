@@ -107,6 +107,7 @@ bool vote(int rank, string name, int ranks[])
         {
             // i is the representation of each candidate - based on their listing in argv
             ranks[rank] = i;
+            // printf("%i", ranks[rank]);
             return true;
         }
     }
@@ -117,28 +118,30 @@ bool vote(int rank, string name, int ranks[])
 void record_preferences(int ranks[])
 {
     // TODO
-    // Create two for loops, i & j, both candidate.length times || ranks.length -> Either works
+    // Two for loops through cand_length i, j -> Both start at 0
     for (int i = 0; i < candidate_count; i++)
     {
         for (int j = 0; j < candidate_count; j++)
         {
-            // Loop through ranks with current candidate with j loop-> 
-            // If the current candidate's position, i, is less than (higher position) than current candidate, j
-            if (ranks[j] < i)
-            {
-                // then tally+1 to preferences
-                preferences[i][j]+=1;
-            }
-            else if (ranks[j] == i)
-            {
-                // else plus equal to 0
-                preferences[i][j]+=0;
-            }
-            printf("%i ", preferences[i][j]);
+             // Compare i and j -> if == || greater than then preferences[ranks[i]][ranks[j]] += 0;
+             if (i == j || i > j)
+             {
+                preferences[i][ranks[j]] += 0;
+             }
+             // If i < j -> preferences[ranks[i]][ranks[j]]++;
+             else if (i < j)
+             {
+                preferences[i][ranks[j]]++;
+                // printf("Rank: %i\n", ranks[j]);
+             }
+              // out for if statements loop print preferences[i][j]
+              printf("%i ", preferences[i][ranks[j]]);
         }
-        printf("\n");
+         // out of J loop print new line
+         printf("\n");
     }
 
+    // printf("%i", ranks[1]);
     return;
 }
 
