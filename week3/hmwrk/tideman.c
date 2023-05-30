@@ -118,30 +118,30 @@ bool vote(int rank, string name, int ranks[])
 void record_preferences(int ranks[])
 {
     // TODO
-    // Two for loops through cand_length i, j -> Both start at 0
+
+    // Two for loops to give each box a value
     for (int i = 0; i < candidate_count; i++)
     {
         for (int j = 0; j < candidate_count; j++)
         {
-             // Compare i and j -> if == || greater than then preferences[ranks[i]][ranks[j]] += 0;
-             if (i == j || i > j)
-             {
-                preferences[i][ranks[j]] += 0;
-             }
-             // If i < j -> preferences[ranks[i]][ranks[j]]++;
-             else if (i < j)
-             {
-                preferences[i][ranks[j]]++;
-                // printf("Rank: %i\n", ranks[j]);
-             }
-              // out for if statements loop print preferences[i][j]
-              printf("%i ", preferences[i][ranks[j]]);
+            if (i < j)
+            {
+                preferences[ranks[i]][ranks[j]]++;
+            }
         }
-         // out of J loop print new line
-         printf("\n");
     }
+    
+    // testing: Two for loops to print out preferences 
+    for (int k = 0; k < candidate_count; k++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            printf("%i ", preferences[k][j]);
+        }
+        printf("\n");
+    }
+    printf("%i", ranks[1]);
 
-    // printf("%i", ranks[1]);
     return;
 }
 
